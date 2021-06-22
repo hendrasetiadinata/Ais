@@ -5,7 +5,7 @@
 }
 
 <style type="text/css">
-    table, th, td {
+    table,tr, th, td {
         border: 1px solid black;
     }
 </style>
@@ -20,8 +20,8 @@
     }
     alert('sort and positive data; ' + data);
 </script>
-<div class="text-center">
-    <h4 style="text-align:left">Reports</h4>
+<div >
+    <h4 style="text-align:left">1.Reports</h4>
 
     @{
         if (Model.Reports.Rows.Count > 0)
@@ -61,7 +61,7 @@
     <br />
     <br />
 
-    <h4 style="text-align:left">Sort and Get Positive Number</h4>
+    <h4 style="text-align:left">2.Sort and Get Positive Number</h4>
     <span style="text-align:left">Result: @Model.SortAndPositiveData</span>
     
 </div>
