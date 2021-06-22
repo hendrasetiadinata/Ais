@@ -1,0 +1,56 @@
+﻿@using System.Data
+@model ResultModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<div class="text-center">
+    <h4 style="text-align:left">Reports</h4>
+
+    @{
+        if (Model.Reports.Rows.Count > 0)
+        {
+            <table style="border:1">
+                <tr>
+                    <td>barcode</td>
+                    <td>jumlah</td>
+                    <td>total harga</td>
+                    <td>ready</td>
+                    <td>onhold</td>
+                    <td>delivered</td>
+                    <td>packing</td>
+                    <td>sent</td>
+                </tr>
+                <tbody>
+                    @{
+                        foreach (DataRow row in Model.Reports.Rows)
+                        {
+                            <tr>
+                                <td style="padding:5px">@row["barcode"].ToString()</td>
+                                <td style="padding:5px">@row["jumlah"].ToString()</td>
+                                <td style="padding:5px">@row["total harga"].ToString()</td>
+                                <td style="padding:5px">@row["ready"].ToString()</td>
+                                <td style="padding:5px">@row["onhold"].ToString()</td>
+                                <td style="padding:5px">@row["delivered"].ToString()</td>
+                                <td style="padding:5px">@row["packing"].ToString()</td>
+                                <td style="padding:5px">@row["sent"].ToString()</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    }
+    <br />
+    <br />
+    <br />
+
+    <h4 style="text-align:left">Sort and Get Positive Number</h4>
+    <span style="text-align:left">Result: @Model.SortAndPositiveData</span>
+    
+</div>
