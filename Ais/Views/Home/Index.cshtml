@@ -11,14 +11,34 @@
 </style>
 <script type="text/javascript">
     var points = [1, -1, 3, -4, 5, -2, 7, 4, 2];
-    points.sort(function (a, b) { return a - b });
+    var positiveData = new Array();
+
+    for (var i = 0; i < points.length; i++) {
+        if (points[i] > 0) positiveData.push(points[i]);
+    }
+
+    var result = new Array();
+    for (var i = 0; i < positiveData.length; i++) {
+        var inc = 0;
+        for (var b = 0; b < points.length; b++) {
+            if (Math.abs(points[b]) == positiveData[i]) {
+                inc++;
+            }
+            if (inc > 1) {
+                result.push(positiveData[i]);
+                break;
+            }
+        }
+    }
+
+    result.sort(function (a, b) { return a - b });
     var data = '';
     for (var i = 0; i < points.length; i++) {
         if (points[i] > 0) {
             data += " " + points[i];
         }
     }
-    alert('sort and positive data; ' + data);
+    //alert('sort and positive data; ' + data);
 </script>
 <div >
     <h4 style="text-align:left">1.Reports</h4>

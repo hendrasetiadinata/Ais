@@ -213,7 +213,20 @@ namespace Ais.Models
         public int[] SortAndGetPositiveNumber(int[] value)
         {
             if (value.Any())
-                return value.Where(x => x > 0).OrderBy(x => x).ToArray();
+            {
+                // set number to positive
+                var positiveData = value.Where(x => x > 0).ToArray();
+                var result = new List<int>();
+
+                for (int i = 0; i < positiveData.Length; i++)
+                {
+                    var pairData = value.Select(x => Math.Abs(x))
+                        .GroupBy(x => x).Where(x => x.Key == positiveData[i] && x.Count() > 1).Select(g => g).ToArray();
+                    if (pairData.Any()) result.Add(positiveData[i]);
+                }
+
+                return result.OrderBy(x => x).ToArray();
+            }
 
             throw new Exception("Value is null or empty.");
         }
